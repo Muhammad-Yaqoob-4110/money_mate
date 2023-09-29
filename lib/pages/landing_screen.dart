@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/second_page.dart';
+import 'package:money_mate/pages/sign_up.dart';
+import 'package:money_mate/pages/login_in.dart';
 
 class SplitwiseLandingScreen extends StatelessWidget {
   const SplitwiseLandingScreen({super.key});
@@ -40,10 +41,10 @@ class SplitwiseLandingScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
+                    // Sign up
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const SecondPage()),
+                      MaterialPageRoute(builder: (context) => const SignUp()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -63,8 +64,7 @@ class SplitwiseLandingScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const SecondPage()),
+                      MaterialPageRoute(builder: (context) => const Login()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

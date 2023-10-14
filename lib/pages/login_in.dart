@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:money_mate/pages/sign_up.dart';
+import 'package:money_mate/pages/dash_board.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class Login extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Welcome back!',
               style: TextStyle(
                 fontSize: 24,
@@ -25,25 +26,28 @@ class Login extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Username',
                 prefixIcon: Icon(Icons.person),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
                 prefixIcon: Icon(Icons.lock),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Add your login logic here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DashBoard()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: buttonMargin),
@@ -51,17 +55,17 @@ class Login extends StatelessWidget {
                 backgroundColor: Colors.blue,
                 shadowColor: Colors.green,
               ),
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SignUp()),
+                  MaterialPageRoute(builder: (context) => SignUp()),
                 );
               },
-              child: Text('Don\'t have an account? Sign up'),
+              child: const Text('Don\'t have an account? Sign up'),
             ),
           ],
         ),

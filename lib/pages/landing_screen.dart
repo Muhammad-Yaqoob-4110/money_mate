@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:money_mate/pages/sign_up.dart';
 import 'package:money_mate/pages/login_in.dart';
 
-class SplitwiseLandingScreen extends StatelessWidget {
-  const SplitwiseLandingScreen({super.key});
+class MoneyMateLandingPage extends StatelessWidget {
+  const MoneyMateLandingPage({super.key});
   @override
   Widget build(BuildContext context) {
     double buttonMargin = 8.0;
@@ -44,7 +44,7 @@ class SplitwiseLandingScreen extends StatelessWidget {
                     // Sign up
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SignUp()),
+                      MaterialPageRoute(builder: (context) => SignUp()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

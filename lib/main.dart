@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/landing_screen.dart';
+// import 'package:money_mate/pages/landing_screen.dart';
+import 'package:money_mate/pages/money_mate_splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SplitwiseLandingScreen(),
+      home: MoneyMateSplashScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

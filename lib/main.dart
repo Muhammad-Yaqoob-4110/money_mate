@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:money_mate/pages/landing_screen.dart';
-import 'package:money_mate/pages/money_mate_splash_screen.dart';
+import 'package:money_mate/pages/Splash%20Screens/money_mate_splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

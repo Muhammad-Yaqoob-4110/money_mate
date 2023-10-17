@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/login_in.dart';
-import 'package:money_mate/pages/sign_up.dart';
+import 'package:money_mate/pages/Login%20Signup%20Screens/login_in.dart';
+import 'package:money_mate/pages/Login%20Signup%20Screens/sign_up.dart';
 
 class LoginSignupScreen extends StatelessWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/login_signup_screen.dart';
+import 'package:money_mate/pages/Login%20Signup%20Screens/login_signup_screen.dart';
 
 class MoneyMateSplashScreen extends StatelessWidget {
   const MoneyMateSplashScreen({Key? key}) : super(key: key);

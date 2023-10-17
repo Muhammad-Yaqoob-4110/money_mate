@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/login_signup_screen.dart';
-
-// ... (Your existing imports and widgets)
+import 'package:money_mate/pages/Login%20Signup%20Screens/login_signup_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -19,6 +19,48 @@ class _SignUpState extends State<SignUp> {
   final Color appColor = const Color(0xFF64C9AC);
   bool _obscureText = true;
 
+  Future<void> _signup() async {
+    final String apiUrl = "http://localhost:4110/api/users";
+
+    final data = {
+      "fullName": _fullNameController.text,
+      "email": _emailController.text,
+      "password": _passwordController.text,
+      "phoneNo": _phoneController.text,
+    };
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: json.encode(data), // Encode the data as JSON
+    );
+    print(response.statusCode); // Check the status code
+    print(response.body); // Check the response body
+
+    final responseData = json.decode(response.body);
+    final message = responseData["message"];
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('API Response'),
+          content: Text(message),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +73,6 @@ class _SignUpState extends State<SignUp> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Full Name Text Field
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Full Name',
@@ -47,11 +88,9 @@ class _SignUpState extends State<SignUp> {
                 fillColor: customColor,
                 hoverColor: customColor,
               ),
-              controller: _fullNameController, // Bind the controller
+              controller: _fullNameController,
             ),
             const SizedBox(height: 16.0),
-
-            // Email Text Field
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Email',
@@ -67,11 +106,9 @@ class _SignUpState extends State<SignUp> {
                 fillColor: customColor,
                 hoverColor: customColor,
               ),
-              controller: _emailController, // Bind the controller
+              controller: _emailController,
             ),
             const SizedBox(height: 16.0),
-
-            // Password Text Field
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Password',
@@ -98,11 +135,9 @@ class _SignUpState extends State<SignUp> {
                 hoverColor: customColor,
               ),
               obscureText: _obscureText,
-              controller: _passwordController, // Bind the controller
+              controller: _passwordController,
             ),
             const SizedBox(height: 16.0),
-
-            // Phone Text Field
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Phone No',
@@ -118,41 +153,15 @@ class _SignUpState extends State<SignUp> {
                 fillColor: customColor,
                 hoverColor: customColor,
               ),
-              controller: _phoneController, // Bind the controller
+              controller: _phoneController,
             ),
-
             const SizedBox(height: 20.0),
             Row(
               children: [
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      // Create a dialog box with entered data
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('User Information'),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text('Full Name: ${_fullNameController.text}'),
-                                Text('Email: ${_emailController.text}'),
-                                Text('Password: ${_passwordController.text}'),
-                                Text('Phone No: ${_phoneController.text}'),
-                              ],
-                            ),
-                            actions: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Close'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      _signup(); // Perform signup and show API response
                     },
                     style: OutlinedButton.styleFrom(
                       fixedSize: const Size(double.infinity, 40),

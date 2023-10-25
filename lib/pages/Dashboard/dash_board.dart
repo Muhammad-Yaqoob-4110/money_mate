@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/Dashboard/account.dart';
+import 'package:money_mate/pages/Dashboard/Account%20Screens/account.dart';
 
 class DashBoard extends StatelessWidget {
   final dynamic data;

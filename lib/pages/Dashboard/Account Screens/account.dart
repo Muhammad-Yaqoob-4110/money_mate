@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:money_mate/pages/Dashboard/Account Screens/edit_account.dart';
+import 'package:money_mate/pages/Login Signup Screens/login_in.dart';
 
 class AccountScreen extends StatefulWidget {
   final dynamic data;
@@ -25,29 +27,32 @@ class _AccountScreenState extends State<AccountScreen> {
             CircleAvatar(
               radius: 80,
               backgroundColor: customColor,
-              // backgroundImage: NetworkImage(data["profileImage"]),
             ),
             SizedBox(height: 20),
             Text(
               '${data["fullName"]}',
-              style: TextStyle(
-                  fontSize: 20, color: Colors.black), // Change text color
+              style: TextStyle(fontSize: 20, color: Colors.black),
             ),
             SizedBox(height: 10),
             Text(
               '${data["email"]}',
-              style: TextStyle(
-                  fontSize: 12, color: Colors.black), // Change text color
+              style: TextStyle(fontSize: 12, color: Colors.black),
             ),
             SizedBox(height: 20),
             _buildOptionCard(
               text: 'Edit Profile',
               icon: Icons.edit,
               onTap: () {
-                // Implement Edit Profile logic here
+                // Navigate to EditProfileScreen and pass user data
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditProfileScreen(userData: data),
+                  ),
+                );
               },
-              cardColor: customColor, // Change card color
-              textColor: Colors.white, // Change text color
+              cardColor: customColor,
+              textColor: Colors.white,
             ),
             SizedBox(height: 20),
             _buildOptionCard(
@@ -55,9 +60,15 @@ class _AccountScreenState extends State<AccountScreen> {
               icon: Icons.logout,
               onTap: () {
                 // Implement Sign Out logic here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Login(),
+                  ),
+                );
               },
-              cardColor: customColor, // Change card color
-              textColor: Colors.white, // Change text color
+              cardColor: customColor,
+              textColor: Colors.white,
             ),
           ],
         ),
@@ -65,31 +76,30 @@ class _AccountScreenState extends State<AccountScreen> {
     );
   }
 
-  Widget _buildOptionCard(
-      {required String text,
-      required IconData icon,
-      required Function() onTap,
-      required Color cardColor,
-      required Color textColor}) {
+  Widget _buildOptionCard({
+    required String text,
+    required IconData icon,
+    required Function() onTap,
+    required Color cardColor,
+    required Color textColor,
+  }) {
     return Card(
-      color: cardColor, // Change card color
+      color: cardColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: ListTile(
         title: Row(
           children: [
-            Icon(icon, size: 20, color: textColor), // Change icon color
+            Icon(icon, size: 20, color: textColor),
             SizedBox(width: 10),
             Text(
               text,
-              style: TextStyle(
-                  fontSize: 14, color: textColor), // Change text color
+              style: TextStyle(fontSize: 14, color: textColor),
             ),
           ],
         ),
-        trailing: Icon(Icons.chevron_right,
-            size: 20, color: textColor), // Change icon color
+        trailing: Icon(Icons.chevron_right, size: 20, color: textColor),
         onTap: onTap,
       ),
     );

@@ -28,14 +28,14 @@ class _LoginState extends State<Login> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(message),
-              if (message == "User found") Text("Data: $data"),
+              if (message == "Authentication successful") Text("Data: $data"),
             ],
           ),
           actions: <Widget>[
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
-                if (message == "User found") {
+                if (message == "Authentication successful") {
                   // Navigate to DashBoard with data
                   Navigator.push(
                     context,
@@ -55,11 +55,21 @@ class _LoginState extends State<Login> {
   }
 
   Future<void> _login() async {
-    final String apiUrl =
-        "http://localhost:4110/api/users/${_emailController.text}";
+    final String apiUrl = "http://localhost:4110/api/users/login";
 
-    final response = await http.get(Uri.parse(apiUrl));
+    final Map<String, String> body = {
+      "email": _emailController.text,
+      "password": _passwordController.text,
+    };
 
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(body),
+    );
+    // print(response.body);
     if (response.statusCode == 200) {
       final responseData = json.decode(response.body);
       final data = responseData["data"];

@@ -1,38 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:money_mate/pages/DashBoard/Account/account.dart';
-// import 'package:money_mate/pages/Dashboard/Account%20Screens/account.dart';
 
-class DashBoard extends StatelessWidget {
+class DashBoard extends StatefulWidget {
   final dynamic data;
+  final int initialIndex;
 
-  DashBoard({Key? key, required this.data}) : super(key: key);
+  DashBoard({Key? key, required this.data, this.initialIndex = 0})
+      : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Money Mate',
-      home: HomeScreen(data: data),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  _HomeScreenState createState() =>
+      _HomeScreenState(data: data, initialIndex: initialIndex);
 }
 
-class HomeScreen extends StatefulWidget {
-  final dynamic data;
-
-  HomeScreen({Key? key, required this.data}) : super(key: key);
-
-  @override
-  _HomeScreenState createState() => _HomeScreenState(data: data);
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<DashBoard> {
   int _currentIndex = 0;
   final Color customColor = const Color(0xFF666666);
   final Color appColor = const Color(0xFF64C9AC);
   late List<Widget> _pages;
 
-  _HomeScreenState({required dynamic data});
+  _HomeScreenState({required dynamic data, required int initialIndex})
+      : _currentIndex = initialIndex;
 
   @override
   void initState() {

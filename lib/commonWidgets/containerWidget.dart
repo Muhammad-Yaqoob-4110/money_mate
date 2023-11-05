@@ -10,9 +10,9 @@ class CustomContainer extends StatelessWidget {
 
   CustomContainer({
     required this.children,
-    this.borderRadius = 8.0,
+    this.borderRadius = 5.0,
     this.padding = 16.0,
-    this.margin = const EdgeInsets.all(16.0), // Default margin
+    this.margin = const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
     this.color = Colors.white,
     this.elevation = 4.0,
   });

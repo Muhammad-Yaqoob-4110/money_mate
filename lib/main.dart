@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
-// import 'package:money_mate/pages/landing_screen.dart';
-import 'package:money_mate/pages/Splash%20Screens/money_mate_splash_screen.dart';
+import 'package:money_mate/pages/DashBoard/splash_screens/splash_screen.dart';
+import 'package:money_mate/pages/sign_up.dart';
+import 'package:money_mate/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MoneyMateSplashScreen(),
+    return MaterialApp(
+      theme: ThemeData(),
+      initialRoute: '/', // or any other initial route
+      routes: {
+        '/': (context) => const MoneyMateSplashScreen(),
+        '/signup': (context) => const SignUp(),
+        '/login': (context) => const Login(),
+        // '/dashboard': (context) => const DashBoard(),
+        // '/signup': (context) => SignUp(),
+        // '/dashboard': (context) => DashBoard(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }

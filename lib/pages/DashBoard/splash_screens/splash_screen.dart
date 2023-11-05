@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/Login%20Signup%20Screens/login_signup_screen.dart';
+import 'package:money_mate/pages/DashBoard/splash_screens/login_signup_screen.dart';
 
 class MoneyMateSplashScreen extends StatelessWidget {
   const MoneyMateSplashScreen({Key? key}) : super(key: key);
 
   void navigateToNextPage(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) =>
-              const LoginSignupScreen(), // Replace 'NextPage()' with your desired next page widget.
+          builder: (context) => const LoginSignupScreen(),
         ),
       );
     });
@@ -17,8 +16,7 @@ class MoneyMateSplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    navigateToNextPage(
-        context); // Call the function to navigate after 5 seconds
+    navigateToNextPage(context);
 
     return Scaffold(
       body: Container(

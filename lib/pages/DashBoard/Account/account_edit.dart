@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:money_mate/pages/Dashboard/Account Screens/account.dart';
+import 'package:money_mate/pages/DashBoard/Account/account.dart';
 import 'dart:convert';
 
 class EditProfileScreen extends StatefulWidget {

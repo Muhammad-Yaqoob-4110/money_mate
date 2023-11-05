@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:money_mate/pages/Dashboard/Account Screens/edit_account.dart';
-import 'package:money_mate/pages/Login Signup Screens/login_in.dart';
+import 'package:money_mate/pages/login.dart';
+import 'package:money_mate/pages/DashBoard/Account/account_edit.dart';
+// import 'package:money_mate/pages/Dashboard/Account Screens/edit_account.dart';
+// import 'package:money_mate/pages/Login Signup Screens/login_in.dart';
 
 class AccountScreen extends StatefulWidget {
   final dynamic data;
@@ -28,17 +30,17 @@ class _AccountScreenState extends State<AccountScreen> {
               radius: 80,
               backgroundColor: customColor,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               '${data["fullName"]}',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               '${data["email"]}',
-              style: TextStyle(fontSize: 12, color: Colors.black),
+              style: const TextStyle(fontSize: 12, color: Colors.black),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildOptionCard(
               text: 'Edit Profile',
               icon: Icons.edit,
@@ -63,7 +65,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Login(),
+                    builder: (context) => const Login(),
                   ),
                 );
               },

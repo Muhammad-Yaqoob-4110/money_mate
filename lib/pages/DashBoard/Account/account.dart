@@ -3,6 +3,7 @@ import 'package:money_mate/pages/login.dart';
 import 'package:money_mate/pages/DashBoard/Account/account_edit.dart';
 import 'package:money_mate/commonWidgets/card_widget.dart';
 import 'package:money_mate/commonFunctions/email_utils.dart';
+import 'package:money_mate/commonWidgets/profile_info.dart';
 
 class AccountScreen extends StatefulWidget {
   final dynamic data;
@@ -27,17 +28,31 @@ class _AccountScreenState extends State<AccountScreen> {
           margin: EdgeInsets.all(20),
           child: Column(
             children: [
-              const SizedBox(height: 20),
-              Text(
-                '${data["fullName"]}',
-                style: const TextStyle(fontSize: 20, color: Colors.black),
+              Column(
+                children: [
+                  ProfileInfo(
+                    text: '${data["fullName"]}',
+                    fontSize: 24,
+                    textColor: appColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  const SizedBox(height: 10),
+                  ProfileInfo(
+                    text: '${data["email"]}',
+                    fontSize: 16,
+                    textColor: appColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  const SizedBox(height: 10),
+                  ProfileInfo(
+                    text: '${data["phoneNo"]}',
+                    fontSize: 16,
+                    textColor: appColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
-              Text(
-                '${data["email"]}',
-                style: const TextStyle(fontSize: 12, color: Colors.black),
-              ),
-              const SizedBox(height: 160),
+              const SizedBox(height: 100),
               CustomOptionCard(
                 text: "Edit Profile",
                 icon: Icons.edit,
@@ -89,6 +104,7 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
         ),
       ),
+      backgroundColor: Colors.yellow,
     );
   }
 }

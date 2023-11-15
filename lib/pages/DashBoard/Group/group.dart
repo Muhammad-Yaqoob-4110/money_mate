@@ -8,6 +8,7 @@ import 'package:money_mate/commonWidgets/custom_outlined_button_widget.dart';
 import 'package:money_mate/commonFunctions/alerts.dart';
 import 'package:money_mate/api_calls/creategroupapi.dart';
 import 'package:money_mate/pages/DashBoard/dashboard.dart';
+import 'package:money_mate/pages/DashBoard/Group/groupExpenses.dart';
 
 class Group extends StatefulWidget {
   final dynamic data;
@@ -120,6 +121,7 @@ class _GroupState extends State<Group> {
                           );
                           final message = responseData["message"];
                           showCustomApiResponce(context, message);
+                          Group._groupNameController.text = "";
                         }).catchError((error) {
                           showCustomErrorOccured(
                               context, "An error occurred: $error");
@@ -169,17 +171,16 @@ class _GroupState extends State<Group> {
                   color: customColor, // Set the background color of the Card
                   child: ListTile(
                     onTap: () {
-                      print(groupList[index]);
-                      // Navigate to another page when a group is tapped
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => GroupDetailsPage(
-                      //       groupName: groupList[index]['name'],
-                      //       // Add more data to pass if needed
-                      //     ),
-                      //   ),
-                      // );
+                      // Uncomment the navigation code
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GroupDetailsPage(
+                            // Pass the group details to the next page
+                            groupDetails: groupList[index],
+                          ),
+                        ),
+                      );
                     },
                     leading: const Icon(Icons.group_rounded,
                         color: Colors.white), // Set the color of the icon
